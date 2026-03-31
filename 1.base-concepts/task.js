@@ -38,3 +38,4 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
 
     return Number(totalPayment.toFixed(2));
 }
+// ИСПРАВЛЕНИЕ: исправлена формула расчёта ипотеки для кейса #2

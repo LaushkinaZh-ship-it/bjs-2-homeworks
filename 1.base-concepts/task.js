@@ -27,6 +27,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     }
 
     const monthlyRate = (percent / 100) / 12;
+
     const loanBody = amount - contribution;
 
     if (loanBody <= 0) {
@@ -34,8 +35,8 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     }
 
     const payment = loanBody * (monthlyRate + (monthlyRate / (Math.pow(1 + monthlyRate, countMonths) - 1)));
-    const totalPayment = contribution + payment * countMonths;
+
+    const totalPayment = payment * countMonths;
 
     return Number(totalPayment.toFixed(2));
 }
-// ИСПРАВЛЕНИЕ: исправлена формула расчёта ипотеки для кейса #2

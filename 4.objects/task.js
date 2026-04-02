@@ -10,14 +10,15 @@ Student.prototype.setSubject = function(subjectName) {
 };
 
 Student.prototype.addMarks = function(...marksToAdd) {
-    if (!this.marks) {
-        throw new Error("Нельзя добавить оценки отчисленному студенту");
+    if (this.excluded) {
+        throw new Error(`Студент ${this.name} отчислен: ${this.excluded}`);
     }
 
     this.marks.push(...marksToAdd);
 };
 
 Student.prototype.getAverage = function() {
+
     if (!this.marks || this.marks.length === 0) {
         return 0;
     }
@@ -26,7 +27,7 @@ Student.prototype.getAverage = function() {
     return Number((sum / this.marks.length).toFixed(2));
 };
 
-Student.prototype.exclude = function(reason) {
+Student.prototype.exclude = function(reason) { 
     delete this.subject;
     delete this.marks;
     this.excluded = reason;
